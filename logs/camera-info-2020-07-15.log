@@ -1,0 +1,15 @@
+2020-07-15 10:53:38.301 [main] INFO  com.junction.CameraServerApplication - Starting CameraServerApplication on WIN-0NH5I81N16J with PID 9336 (D:\rpts\RTSPtoRTMP\target\classes started by Administrator in D:\rpts\RTSPtoRTMP)
+2020-07-15 10:53:38.303 [main] INFO  com.junction.CameraServerApplication - No active profile set, falling back to default profiles: default
+2020-07-15 10:53:38.829 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2020-07-15 10:53:38.835 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2020-07-15 10:53:38.835 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-15 10:53:38.836 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-07-15 10:53:38.893 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/camera] - Initializing Spring embedded WebApplicationContext
+2020-07-15 10:53:38.893 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 569 ms
+2020-07-15 10:53:39.024 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-15 10:53:39.103 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-07-15 10:53:39.121 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2020-07-15 10:53:39.136 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path '/camera'
+2020-07-15 10:53:39.139 [main] INFO  com.junction.CameraServerApplication - Started CameraServerApplication in 1.155 seconds (JVM running for 1.713)
+2020-07-15 10:53:39.141 [timeTimer] INFO  com.junction.util.TimerUtil - ******   执行定时任务       BEGIN   ******
+2020-07-15 10:53:39.141 [timeTimer] INFO  com.junction.util.TimerUtil - ******   执行定时任务       END     ******
