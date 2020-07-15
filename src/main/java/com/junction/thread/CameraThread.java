@@ -54,6 +54,7 @@ public class CameraThread {
 				CacheUtil.STREAMMAP.remove(cameraPojo.getToken());
 				CameraController.jobMap.remove(cameraPojo.getToken());
 			} catch (Exception e) {
+				logger.error(e.getMessage());
 				logger.error("当前任务： " + cameraPojo.getRtsp() + "停止...");
 				CacheUtil.STREAMMAP.remove(cameraPojo.getToken());
 				CameraController.jobMap.remove(cameraPojo.getToken());

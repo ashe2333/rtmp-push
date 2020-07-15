@@ -1,0 +1,169 @@
+2020-07-14 10:54:02.071 [scheduling-1] ERROR o.s.s.support.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:7000/user/login": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:751)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:677)
+	at org.springframework.web.client.RestTemplate.postForObject(RestTemplate.java:421)
+	at com.junction.util.CamerasTask.login(CamerasTask.java:81)
+	at com.junction.util.CamerasTask.task(CamerasTask.java:119)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:93)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.base/java.net.PlainSocketImpl.connect0(Native Method)
+	at java.base/java.net.PlainSocketImpl.socketConnect(PlainSocketImpl.java:101)
+	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399)
+	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242)
+	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224)
+	at java.base/java.net.Socket.connect(Socket.java:608)
+	at java.base/java.net.Socket.connect(Socket.java:557)
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:182)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:474)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:569)
+	at java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:341)
+	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:362)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1248)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1187)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1081)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1015)
+	at org.springframework.http.client.SimpleBufferingClientHttpRequest.executeInternal(SimpleBufferingClientHttpRequest.java:76)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:53)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:742)
+	... 17 common frames omitted
+2020-07-14 10:55:03.516 [scheduling-1] ERROR o.s.s.support.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task
+java.lang.ClassCastException: class java.lang.Integer cannot be cast to class java.lang.String (java.lang.Integer and java.lang.String are in module java.base of loader 'bootstrap')
+	at com.junction.util.CamerasTask.task(CamerasTask.java:129)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:93)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-07-14 10:57:03.091 [scheduling-1] ERROR o.s.s.support.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task
+java.lang.ClassCastException: class java.lang.Integer cannot be cast to class java.lang.String (java.lang.Integer and java.lang.String are in module java.base of loader 'bootstrap')
+	at com.junction.util.CamerasTask.task(CamerasTask.java:129)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:93)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-07-14 10:58:44.586 [scheduling-1] ERROR o.s.s.support.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task
+java.lang.ClassCastException: class java.lang.Integer cannot be cast to class java.lang.String (java.lang.Integer and java.lang.String are in module java.base of loader 'bootstrap')
+	at com.junction.util.CamerasTask.task(CamerasTask.java:129)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:93)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-07-14 11:01:08.752 [pool-1-thread-1] ERROR com.junction.util.CameraPush - rtsp://admin:Huangpei120@192.168.1.64:554/h264/ch1/main/av_stream  推流异常！
+2020-07-14 11:01:08.754 [pool-1-thread-1] ERROR com.junction.util.CameraPush - ffmpeg错误信息：
+org.bytedeco.javacv.FrameRecorder$Exception: avio_open2 error() error -138: Could not open 'null'
+	at org.bytedeco.javacv.FFmpegFrameRecorder.startUnsafe(FFmpegFrameRecorder.java:859)
+	at org.bytedeco.javacv.FFmpegFrameRecorder.start(FFmpegFrameRecorder.java:384)
+	at org.bytedeco.javacv.FFmpegFrameRecorder.start(FFmpegFrameRecorder.java:379)
+	at com.junction.util.CameraPush.to(CameraPush.java:185)
+	at com.junction.thread.CameraThread$MyRunnable.run(CameraThread.java:51)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-07-14 11:01:08.756 [pool-1-thread-1] ERROR com.junction.thread.CameraThread - null
+2020-07-14 11:01:08.756 [pool-1-thread-1] ERROR com.junction.thread.CameraThread - 当前任务： rtsp://admin:Huangpei120@192.168.1.64:554/h264/ch1/main/av_stream停止...
+2020-07-14 11:02:05.234 [pool-1-thread-1] ERROR com.junction.util.CameraPush - rtsp://admin:Huangpei120@192.168.1.64:554/h264/ch1/main/av_stream  推流异常！
+2020-07-14 11:02:05.234 [pool-1-thread-1] ERROR com.junction.util.CameraPush - ffmpeg错误信息：
+org.bytedeco.javacv.FrameRecorder$Exception: avio_open2 error() error -138: Could not open 'null'
+	at org.bytedeco.javacv.FFmpegFrameRecorder.startUnsafe(FFmpegFrameRecorder.java:859)
+	at org.bytedeco.javacv.FFmpegFrameRecorder.start(FFmpegFrameRecorder.java:384)
+	at org.bytedeco.javacv.FFmpegFrameRecorder.start(FFmpegFrameRecorder.java:379)
+	at com.junction.util.CameraPush.to(CameraPush.java:185)
+	at com.junction.thread.CameraThread$MyRunnable.run(CameraThread.java:51)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-07-14 11:02:05.236 [pool-1-thread-1] ERROR com.junction.thread.CameraThread - null
+2020-07-14 11:02:05.236 [pool-1-thread-1] ERROR com.junction.thread.CameraThread - 当前任务： rtsp://admin:Huangpei120@192.168.1.64:554/h264/ch1/main/av_stream停止...
+2020-07-14 12:26:01.008 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:09:58.774 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:10:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:11:01.006 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:12:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:13:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:14:01.006 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:15:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:16:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:17:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:18:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:19:01.003 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:20:01.006 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:21:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:22:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:23:01.007 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:24:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:25:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:26:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:27:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:28:01.008 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:29:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:30:01.007 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:31:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:32:01.003 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:33:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:34:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:35:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:36:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:37:01.006 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:38:01.003 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:39:01.006 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 18:40:00.462 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:05:42.141 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:06:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:07:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:08:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:09:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:10:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:11:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:12:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:13:01.003 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:14:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:15:01.005 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:16:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:17:01.006 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:18:01.006 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:19:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:20:01.007 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:21:01.004 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！
+2020-07-14 22:22:01.007 [pool-1-thread-1] ERROR com.junction.util.CameraPush - 与拉流IP：   192.168.1.64   端口：   554    建立TCP连接失败！

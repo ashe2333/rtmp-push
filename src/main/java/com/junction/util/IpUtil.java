@@ -4,6 +4,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class IpUtil {
+
+
 	public static String IpConvert(String domainName) {
 		String ip = domainName;
 		try {

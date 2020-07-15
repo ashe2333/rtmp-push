@@ -113,13 +113,14 @@ public class CameraPush {
 		try {
 			logger.debug("******   grabber.start()    BEGIN   ******");
 
-			if ("sub".equals(cameraPojo.getStream())) {
-				grabber.start(config.getSub_code());
-			} else if ("main".equals(cameraPojo.getStream())) {
-				grabber.start(config.getMain_code());
-			} else {
-				grabber.start(config.getMain_code());
-			}
+//			if ("sub".equals(cameraPojo.getStream())) {
+//				grabber.start(config.getSub_code());
+//			} else if ("main".equals(cameraPojo.getStream())) {
+//				grabber.start(config.getMain_code());
+//			} else {
+//				grabber.start(config.getMain_code());
+//			}
+			grabber.start(config.getMain_code());
 
 			logger.debug("******   grabber.start()    END     ******");
 

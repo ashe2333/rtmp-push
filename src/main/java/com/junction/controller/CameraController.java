@@ -45,24 +45,13 @@ public class CameraController {
 	/**
 	 * @Title: openCamera
 	 * @Description: 开启视频流
-	 * @param ip
-	 * @param username
-	 * @param password
-	 * @param channel   通道
-	 * @param stream    码流
-	 * @param starttime
-	 * @param endtime
 	 * @return Map<String,String>
 	 **/
 	@RequestMapping(value = "/cameras", method = RequestMethod.POST)
-//	public Map<String, String> openCamera(@RequestBody CameraPojo pojo) {
-	public Map<String, String> openCamera(CameraPojo pojo) {
+	public Map<String, String> openCamera(@RequestBody  CameraPojo pojo) {
 		// 返回结果
 		Map<String, String> map = new HashMap<String, String>();
-		// 校验参数
-		if (null != pojo.getIp() && !"".equals(pojo.getIp()) && null != pojo.getUsername()
-				&& !"".equals(pojo.getUsername()) && null != pojo.getPassword() && !"".equals(pojo.getPassword())
-				&& null != pojo.getChannel() && !"".equals(pojo.getChannel())) {
+		String token =pojo.getToken();
 			CameraPojo cameraPojo = new CameraPojo();
 			// 获取当前时间
 			String openTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date().getTime());
@@ -70,135 +59,69 @@ public class CameraController {
 			// 缓存是否为空
 			if (0 == keys.size()) {
 				// 开始推流
-				cameraPojo = openStream(pojo.getIp(), pojo.getUsername(), pojo.getPassword(), pojo.getChannel(),
-						pojo.getStream(), pojo.getStartTime(), pojo.getEndTime(), openTime);
+				cameraPojo = openStream(pojo.getIp(),token,pojo.getRtsp(),openTime);
 				map.put("token", cameraPojo.getToken());
 				map.put("url", cameraPojo.getUrl());
 				logger.info("打开：" + cameraPojo.getRtsp());
 			} else {
 				// 是否存在的标志；0：不存在；1：存在
 				int sign = 0;
-				if (null == pojo.getStartTime()) {// 直播流
-					for (String key : keys) {
-						if (pojo.getIp().equals(CacheUtil.STREAMMAP.get(key).getIp())
-								&& pojo.getChannel().equals(CacheUtil.STREAMMAP.get(key).getChannel())
-								&& null == CacheUtil.STREAMMAP.get(key).getStartTime()) {// 存在直播流
-							cameraPojo = CacheUtil.STREAMMAP.get(key);
-							sign = 1;
-							break;
-						}
+					if(keys.contains(token)){
+						cameraPojo = CacheUtil.STREAMMAP.get(token);
+						sign = 1;
 					}
 					if (sign == 1) {// 存在
-						cameraPojo.setCount(cameraPojo.getCount() + 1);
+						cameraPojo.setCount( 1);
 						cameraPojo.setOpenTime(openTime);
 						map.put("token", cameraPojo.getToken());
 						map.put("url", cameraPojo.getUrl());
 						logger.info("打开：" + cameraPojo.getRtsp());
 					} else {
-						cameraPojo = openStream(pojo.getIp(), pojo.getUsername(), pojo.getPassword(), pojo.getChannel(),
-								pojo.getStream(), pojo.getStartTime(), pojo.getEndTime(), openTime);
+						cameraPojo = openStream(pojo.getIp(),token,pojo.getRtsp(),openTime);
 						map.put("token", cameraPojo.getToken());
 						map.put("url", cameraPojo.getUrl());
 						logger.info("打开：" + cameraPojo.getRtsp());
 					}
 
-				} else {// 历史流
-					for (String key : keys) {
-						if (pojo.getIp().equals(CacheUtil.STREAMMAP.get(key).getIp())
-								&& null != CacheUtil.STREAMMAP.get(key).getStartTime()) {// 存在历史流
-							cameraPojo = CacheUtil.STREAMMAP.get(key);
-							sign = 1;
-							break;
-						}
-					}
-					if (sign == 1) {
-						cameraPojo.setCount(cameraPojo.getCount() + 1);
-						cameraPojo.setOpenTime(openTime);
-						map.put("message", "正在进行回放...");
-						logger.info(cameraPojo.getRtsp() + " 正在进行回放...");
-					} else {
-						cameraPojo = openStream(pojo.getIp(), pojo.getUsername(), pojo.getPassword(), pojo.getChannel(),
-								pojo.getStream(), pojo.getStartTime(), pojo.getEndTime(), openTime);
-						map.put("token", cameraPojo.getToken());
-						map.put("url", cameraPojo.getUrl());
-						logger.info("打开：" + cameraPojo.getRtsp());
-					}
 				}
-			}
-		}
+//		}
 		return map;
 	}
 
 	/**
 	 * @Title: openStream
 	 * @Description: 推流器
-	 * @param ip
-	 * @param username
-	 * @param password
-	 * @param channel
-	 * @param stream
-	 * @param starttime
-	 * @param endtime
-	 * @param openTime
+
 	 * @return
 	 * @return CameraPojo
 	 **/
-	private CameraPojo openStream(String ip, String username, String password, String channel, String stream,
-			String starttime, String endtime, String openTime) {
+	private CameraPojo openStream(String ip,String token,String rtsp,String openTime) {
 		CameraPojo cameraPojo = new CameraPojo();
 		// 生成token
-		String token = UUID.randomUUID().toString();
-		String rtsp = "";
+//		String token = UUID.randomUUID().toString();
 		String rtmp = "";
-		String IP = IpUtil.IpConvert(ip);
+//		String IP = IpUtil.IpConvert(ip);
 		String url = "";
 		// 历史流
-		if (null != starttime && !"".equals(starttime)) {
-			if (null != endtime && !"".equals(endtime)) {
-				rtsp = "rtsp://" + username + ":" + password + "@" + IP + ":554/Streaming/tracks/" + channel
-						+ "01?starttime=" + starttime.substring(0, 8) + "t" + starttime.substring(8) + "z'&'endtime="
-						+ endtime.substring(0, 8) + "t" + endtime.substring(8) + "z";
-				cameraPojo.setStartTime(starttime);
-				cameraPojo.setEndTime(endtime);
-			} else {
-				try {
-					SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-					String startTime = df.format(df.parse(starttime).getTime() - 60 * 1000);
-					String endTime = df.format(df.parse(starttime).getTime() + 60 * 1000);
-					rtsp = "rtsp://" + username + ":" + password + "@" + IP + ":554/Streaming/tracks/" + channel
-							+ "01?starttime=" + startTime.substring(0, 8) + "t" + startTime.substring(8)
-							+ "z'&'endtime=" + endTime.substring(0, 8) + "t" + endTime.substring(8) + "z";
-					cameraPojo.setStartTime(startTime);
-					cameraPojo.setEndTime(endTime);
-				} catch (ParseException e) {
-					logger.error("时间格式化错误！", e);
-				}
-			}
-			rtmp = "rtmp://" + IpUtil.IpConvert(config.getPush_host()) + ":" + config.getPush_port() + "/history/"
-					+ token;
-			if (config.getHost_extra().equals("127.0.0.1")) {
-				url = rtmp;
-			} else {
-				url = "rtmp://" + IpUtil.IpConvert(config.getHost_extra()) + ":" + config.getPush_port() + "/history/"
-						+ token;
-			}
-		} else {// 直播流
-			rtsp = "rtsp://" + username + ":" + password + "@" + IP + ":554/h264/ch" + channel + "/" + stream
-					+ "/av_stream";
-			rtmp = "rtmp://" + IpUtil.IpConvert(config.getPush_host()) + ":" + config.getPush_port() + "/live/" + token;
-			if (config.getHost_extra().equals("127.0.0.1")) {
-				url = rtmp;
-			} else {
-				url = "rtmp://" + IpUtil.IpConvert(config.getHost_extra()) + ":" + config.getPush_port() + "/live/"
-						+ token;
-			}
-		}
+//		rtsp = "rtsp://" + username + ":" + password + "@" + IP + ":554/h264/ch" + channel + "/" + stream
+//				+ "/av_stream";
+		String pushIp = config.getPush_host();
+		String port = config.getPush_port();
+		rtmp = "rtmp://" + pushIp + ":" +port+ "/live/" + token;
+//		rtmp = "rtmp://" + IpUtil.IpConvert(config.getPush_host()) + ":" + config.getPush_port() + "/live/" + token;
+//		if (config.getHost_extra().equals("127.0.0.1")) {
+//			url = rtmp;
+//		} else {
+//			url = "rtmp://" + IpUtil.IpConvert(config.getHost_extra()) + ":" + config.getPush_port() + "/live/"
+//					+ token;
+//		}
+		url = rtmp;
 
-		cameraPojo.setUsername(username);
-		cameraPojo.setPassword(password);
-		cameraPojo.setIp(IP);
-		cameraPojo.setChannel(channel);
-		cameraPojo.setStream(stream);
+//		cameraPojo.setUsername(username);
+//		cameraPojo.setPassword(password);
+		cameraPojo.setIp(ip);
+//		cameraPojo.setChannel(channel);
+//		cameraPojo.setStream(stream);
 		cameraPojo.setRtsp(rtsp);
 		cameraPojo.setRtmp(rtmp);
 		cameraPojo.setUrl(url);

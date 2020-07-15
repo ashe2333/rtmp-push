@@ -58,11 +58,6 @@ public class TimerUtil implements CommandLineRunner {
 								// 清除缓存
 								CacheUtil.STREAMMAP.remove(key);
 								CameraController.jobMap.remove(key);
-							} else if ((newTime - openTime) / 1000 / 60 > Integer.valueOf(config.getKeepalive())) {
-								CameraController.jobMap.get(key).setInterrupted();
-								logger.debug("[定时任务：]  结束： " + CacheUtil.STREAMMAP.get(key).getRtsp() + "  推流任务！");
-								CameraController.jobMap.remove(key);
-								CacheUtil.STREAMMAP.remove(key);
 							}
 						} catch (ParseException e) {
 							e.printStackTrace();

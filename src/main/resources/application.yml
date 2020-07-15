@@ -6,7 +6,7 @@ config:
 #直播流保活时间(分钟)
   keepalive: ${CAMERASERVER_KEEPALIVE:5}
 #nginx推送地址
-  push_host: ${CAMERASERVER_PUSH_HOST:127.0.0.1}
+  push_host: ${CAMERASERVER_PUSH_HOST:192.168.1.105}
 #额外推送地址
   host_extra: ${CAMERASERVER_HOST_EXTRA:127.0.0.1}
 #nginx推送端口
